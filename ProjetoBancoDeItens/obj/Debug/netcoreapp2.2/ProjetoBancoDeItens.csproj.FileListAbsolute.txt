@@ -23,3 +23,10 @@ C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\
 C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewStart.g.cshtml.cs
 C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\ProjetoBancoDeItens.RazorTargetAssemblyInfo.cache
 C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\ProjetoBancoDeItens.RazorTargetAssemblyInfo.cs
+C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\bin\Debug\netcoreapp2.2\ProjetoBancoDeItens.pdb
+C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\bin\Debug\netcoreapp2.2\ProjetoBancoDeItens.Views.dll
+C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\bin\Debug\netcoreapp2.2\ProjetoBancoDeItens.Views.pdb
+C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\ProjetoBancoDeItens.Views.pdb
+C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\ProjetoBancoDeItens.dll
+C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\ProjetoBancoDeItens.pdb
+C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\ProjetoBancoDeItens.csproj.CopyComplete
