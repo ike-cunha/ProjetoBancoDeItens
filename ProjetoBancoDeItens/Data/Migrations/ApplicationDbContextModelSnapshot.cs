@@ -146,9 +146,6 @@ namespace ProjetoBancoDeItens.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(256);
-
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<bool>("LockoutEnabled");
@@ -161,12 +158,6 @@ namespace ProjetoBancoDeItens.Data.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("VARCHAR(120)");
 
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256);
-
                     b.Property<string>("PasswordHash");
 
                     b.Property<string>("PhoneNumber");
@@ -178,19 +169,12 @@ namespace ProjetoBancoDeItens.Data.Migrations
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
+                        .HasColumnName("Email")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("Usuario");
                 });
 
             modelBuilder.Entity("ProjetoBancoDeItens.Data.Model.Competencia", b =>

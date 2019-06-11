@@ -6,6 +6,32 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\Shared\Assets\aaa.png" />
+    <Content Include="Pages\Shared\Assets\aceito_preto.jpg" />
+    <Content Include="Pages\Shared\Assets\aceito_verde.png" />
+    <Content Include="Pages\Shared\Assets\adicionar.png" />
+    <Content Include="Pages\Shared\Assets\bbb.png" />
+    <Content Include="Pages\Shared\Assets\carregando.png" />
+    <Content Include="Pages\Shared\Assets\excluir.png" />
+    <Content Include="Pages\Shared\Assets\fechar_sessao.png" />
+    <Content Include="Pages\Shared\Assets\Fundo.png" />
+    <Content Include="Pages\Shared\Assets\fundo_vermelho.jpg" />
+    <Content Include="Pages\Shared\Assets\horizontal-rectangle-with-text-lines.png" />
+    <Content Include="Pages\Shared\Assets\loupe.png" />
+    <Content Include="Pages\Shared\Assets\lupa.png" />
+    <Content Include="Pages\Shared\Assets\lupa_procurar.png" />
+    <Content Include="Pages\Shared\Assets\profile icon.png" />
+    <Content Include="Pages\Shared\Assets\reload.png" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="jQuery" Version="3.4.1" />
@@ -14,6 +40,17 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Sendgrid" Version="9.11.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Presentation\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="wwwroot\js\IdentityScripts.js" />
   </ItemGroup>
 
 </Project>

@@ -13,13 +13,13 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account.Manage
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
-#line 2 "C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\Areas\Identity\Pages\_ViewImports.cshtml"
-using ProjetoBancoDeItens.Areas.Identity;
+#line 1 "C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\Areas\Identity\Pages\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
-#line 3 "C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\Areas\Identity\Pages\_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
+#line 2 "C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\Areas\Identity\Pages\_ViewImports.cshtml"
+using ProjetoBancoDeItens.Areas.Identity;
 
 #line default
 #line hidden
@@ -34,7 +34,7 @@ using ProjetoBancoDeItens.Areas.Identity.Pages.Account.Manage;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ef04df933cb2e0efeefd8c8660c89aaac19e50f5", @"/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"38030e7186f15c0604e7b8aa64516925e0e4fea6", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ad80af4c5ada5c0d7bb3bad243dd3164cede5681", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e4decd98fd3e4e3a73712f55e36230eb8730a8ec", @"/Areas/Identity/Pages/Account/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7fcecd255548702f97c4cd53485e2e6e3c0d653e", @"/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml")]
     public class Areas_Identity_Pages_Account_Manage_ExternalLogins : global::Microsoft.AspNetCore.Mvc.RazorPages.Page

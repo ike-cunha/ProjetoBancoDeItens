@@ -17,7 +17,7 @@
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body class="bg-background-image">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -42,7 +42,7 @@
     </header>
     <div class="container">
         @*<partial name="_CookieConsentPartial" />*@
-        <main role="main" class="pb-3">
+        <main role="main" class="p-3">
             @RenderBody()
         </main>
     </div>
@@ -71,8 +71,14 @@
                 integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
         </script>
     </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+<style>
+    .bg-background-image {
+        background-image: url("http://uploaddeimagens.com.br/images/002/133/048/original/Fundo.png?1560035506");
+        background-size: cover;
+    }
+</style>

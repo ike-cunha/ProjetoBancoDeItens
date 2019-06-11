@@ -1,37 +1,86 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Cadastro";
 }
 
-<h1>@ViewData["Title"]</h1>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-12 text-center">
+        <h1>@ViewData["Title"]</h1>
+        <hr class="col-8"/>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-md-8 bg-success text-white rounded-lg p-3">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="usuario.CPF" class="col-sm-2 col-form-label"></label>
+                <div class="col-10">
+                    <input id="cpfId" asp-for="usuario.CPF" class="form-control" />
+                </div>
+                <span asp-validation-for="usuario.CPF" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="usuario.Nome" class="col-sm-2 col-form-label"></label>
+                <div class="col-10">
+                    <input id="cpfId" asp-for="usuario.Nome" class="form-control" />
+                </div>
+                <span asp-validation-for="usuario.Nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="usuario.Email" class="col-sm-2 col-form-label"></label>
+                <div class="col-10">
+                    <input id="cpfId" asp-for="usuario.Email" class="form-control" />
+                </div>
+                <span asp-validation-for="usuario.Email" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <div class="form-group row">
+                <label asp-for="usuario.Matricula" class="col-sm-2 col-form-label"></label>
+                <div class="col-10">
+                    <input id="cpfId" asp-for="usuario.Matricula" class="form-control" />
+                </div>
+                <span asp-validation-for="usuario.Matricula" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="usuario.Curso" class="col-sm-2 col-form-label"></label>
+                <div class="col-10">
+                    <div class="form-group">
+                        @Html.DropDownList("cursos", (List<SelectListItem>)ViewData["Cursos"], "Selecione o curso", new { @class = "form-control checkclass" })
+                    </div>
+                </div>
+                <span asp-validation-for="usuario.Curso" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="usuario.UnidadeCurricular" class="col-sm-4 col-form-label"></label>
+                <div class="col-8">
+                    <input id="cpfId" asp-for="usuario.UnidadeCurricular" class="form-control" />
+                </div>
+                <span asp-validation-for="usuario.UnidadeCurricular" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="usuario.Senha" class="col-sm-2 col-form-label"></label>
+                <div class="col-10">
+                    <input asp-for="usuario.Senha" class="form-control" />
+                </div>
+                <span asp-validation-for="usuario.Senha" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="usuario.ConfirmaASenha" class="col-sm-3 col-form-label"></label>
+                <div class="col-9">
+                    <input asp-for="usuario.ConfirmaASenha" class="form-control" />
+                </div>
+                <span asp-validation-for="usuario.ConfirmaASenha" class="text-danger"></span>
+            </div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-outline-light align-content-center">Cadastrar</button>
+            </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/jquery.inputmask/jquery.inputmask.bundle.js"></script>
 }
