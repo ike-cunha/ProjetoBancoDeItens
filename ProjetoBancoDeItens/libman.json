@@ -5,6 +5,10 @@
     {
       "library": "jquery.inputmask@3.3.4",
       "destination": "wwwroot/lib/jquery.inputmask/"
+    },
+    {
+      "library": "font-awesome@5.8.2",
+      "destination": "wwwroot/lib/font-awesome/"
     }
   ]
 }

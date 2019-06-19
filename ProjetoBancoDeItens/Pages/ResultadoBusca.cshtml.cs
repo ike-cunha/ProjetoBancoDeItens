@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ProjetoBancoDeItens.Pages
 {
-    public class ItemModel : PageModel
+    public class ResultadoBuscaModel : PageModel
     {
-        public void OnGet()
+        public void OnGet(string ConteudoBusca)
         {
 
         }

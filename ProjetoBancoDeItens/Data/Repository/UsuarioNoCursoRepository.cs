@@ -19,6 +19,7 @@ namespace ProjetoBancoDeItens.Data.Repository
         public void AdicionarLista(UsuarioNoCurso[] listaUsuariosNoCurso)
         {
             db.UsuarioNoCurso.AddRangeAsync(listaUsuariosNoCurso);
+            db.SaveChanges();
         }
     }
 }

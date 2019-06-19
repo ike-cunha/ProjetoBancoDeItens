@@ -15,7 +15,7 @@ namespace ProjetoBancoDeItens.Data.Repository
             db = _db;
         }
 
-        public List<IdNomeDTO> Listar ()
+        public List<IdNomeDTO> Listar()
         {
             return db.Curso.Select(c => new IdNomeDTO
             {

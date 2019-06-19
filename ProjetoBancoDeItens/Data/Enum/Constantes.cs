@@ -36,5 +36,12 @@ namespace ProjetoBancoDeItens.Data.Enum
             [Description("Muito Difícil")]
             MuitoDificil = 5,
         }
+
+        public enum Posicao
+        {
+            Suporte = 1,
+            Comando = 2,
+            Gabarito = 3,
+        }
     }
 }

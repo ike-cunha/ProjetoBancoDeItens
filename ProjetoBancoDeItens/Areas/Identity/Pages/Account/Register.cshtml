@@ -46,7 +46,7 @@
                 <label asp-for="usuario.Curso" class="col-sm-2 col-form-label"></label>
                 <div class="col-10">
                     <div class="form-group">
-                        @Html.DropDownList("cursos", (List<SelectListItem>)ViewData["Cursos"], "Selecione o curso", new { @class = "form-control checkclass" })
+                        <select asp-for="usuario.Curso" asp-items="Model.ListaCursos" class="form-control checkclass"></select>
                     </div>
                 </div>
                 <span asp-validation-for="usuario.Curso" class="text-danger"></span>

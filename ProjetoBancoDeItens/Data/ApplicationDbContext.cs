@@ -14,20 +14,20 @@ namespace ProjetoBancoDeItens.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    base.OnModelCreating(builder);
 
                 
-            builder.Entity<ApplicationUser>(entity =>
-            {
-                entity.ToTable(name: "Usuario");
-                entity.Property(u => u.UserName).HasColumnName("Email");
-                entity.Ignore(e => e.Email);
-                entity.Ignore(n => n.NormalizedUserName);
-                entity.Ignore(n => n.NormalizedEmail);
-            });
-        }
+        //    builder.Entity<ApplicationUser>(entity =>
+        //    {
+        //        //entity.ToTable("Usuario");
+        //        //entity.Property(u => u.UserName).HasColumnName("Email");
+        //        //entity.Ignore(e => e.Email);
+        //        entity.Ignore(n => n.NormalizedUserName);
+        //        entity.Ignore(n => n.NormalizedEmail);
+        //    });
+        //}
 
         public DbSet<Curso> Curso { get; set; }
         public DbSet<UsuarioNoCurso> UsuarioNoCurso { get; set; }
@@ -37,5 +37,6 @@ namespace ProjetoBancoDeItens.Data
         public DbSet<Item> Item { get; set; }
         public DbSet<Competencia> Competencia { get; set; }
         public DbSet<CompetenciaDoItem> CompetenciaDoItem { get; set; }
+        public DbSet<ConteudoItem> ConteudoItem { get; set; }
     }
 }

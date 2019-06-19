@@ -63,3 +63,5 @@ C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\
 C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Error.g.cshtml.cs
 C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
+C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\Razor\Pages\Home.g.cshtml.cs
+C:\Users\Trampo e Família\source\repos\ProjetoBancoDeItens\ProjetoBancoDeItens\ProjetoBancoDeItens\obj\Debug\netcoreapp2.2\Razor\Pages\ResultadoBusca.g.cshtml.cs

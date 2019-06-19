@@ -1,0 +1,50 @@
+﻿@page
+@model ProjetoBancoDeItens.Pages.ResultadoBuscaModel
+@{
+    ViewData["Title"] = "ResultadoBusca";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/faeb5bd984.js"></script>
+}
+
+<div class="row p-5">
+    <div class="col-1"></div>
+    <div class="input-group col-10">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-success border-0" id="basic-addon1"><i class="fa fa-search text-white"></i></span>
+        </div>
+        <input type="text" class="form-control text-center" placeholder="Campo de Busca" aria-label="Campo de Busca" aria-describedby="basic-addon1">
+    </div>
+    <div class="col-1"></div>
+</div>
+<div class="row">
+    <div class="col-10">
+        <div class="table-responsive col">
+            <table class="table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center col-3">Código</th>
+                        <th scope="col" class="text-center col-6">Item (comando)</th>
+                        <th scope="col" class="text-center col-3"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*@foreach (var itemAvaliacao in collection)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                @itemAvaliacao.Id
+                            </td>
+                            <td class="text-left">
+                                @itemAvaliacao.Nome.Substring(0, 25) ...
+                            </td>
+                        </tr>
+                    }*@
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

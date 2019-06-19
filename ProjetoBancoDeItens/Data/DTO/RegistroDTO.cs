@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace ProjetoBancoDeItens.Data.DTO
 
         [Required(ErrorMessage = "Escolha ao menos um curso")]
         [Display(Name = "Curso(s)")]
-        public IdNomeDTO[] Curso { get; set; }
+        public string[] Curso { get; set; }
 
         [Required(ErrorMessage = "Escolha ao menos uma unidade curricular")]
         [Display(Name = "Unidade(s) Curricular(es)")]

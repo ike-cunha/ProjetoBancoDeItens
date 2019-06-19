@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using ProjetoBancoDeItens.Data.Repository;
 using ProjetoBancoDeItens.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
 {
@@ -43,23 +44,25 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
         [BindProperty]
         public RegistroDTO usuario { get; set; }
 
+        public List<SelectListItem> ListaCursos { get; set; }
+
         public string ReturnUrl { get; set; }
 
         public void OnGet(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
 
-            ViewData["Cursos"] = new CursoRepository(_db).Listar()
-                                                         .Select(c => new SelectListItem
-                                                         {
-                                                             Text = c.Nome,
-                                                             Value = c.Id.ToString(),
-                                                         }).ToList();
+            ListaCursos = new CursoRepository(_db).Listar()
+                                                .Select(c => new SelectListItem
+                                                {
+                                                    Text = c.Nome,
+                                                    Value = c.Id.ToString(),
+                                                }).ToList();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? Url.Content("~/home");
             if (ModelState.IsValid)
             {
                 ApplicationUser dadosUsuario = new ApplicationUser
@@ -68,11 +71,12 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
                     Nome = usuario.Nome,
                     UserName = usuario.Email,
                     Matricula = usuario.Matricula,
+                    Email = usuario.Email,
                 };
                 IdentityResult adicionarDadosPessoais = await _userManager.CreateAsync(dadosUsuario, usuario.Senha);
 
-                int[] listaCursosIds = usuario.Curso.Select(c => c.Id).ToArray();
-                UsuarioNoCurso[] listaUsuariosNoCurso = MontarUsuariosNoCurso(listaCursosIds, dadosUsuario.Id);
+                string[] listaCursosIds = usuario.Curso;
+                UsuarioNoCurso[] listaUsuariosNoCurso = MontarUsuariosNoCurso(listaCursosIds , dadosUsuario.Id);
                 new UsuarioNoCursoRepository(_db).AdicionarLista(listaUsuariosNoCurso); 
 
                 if (adicionarDadosPessoais.Succeeded)
@@ -90,7 +94,7 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
                     await _emailSender.SendEmailAsync(usuario.Email, "Banco de Itens SENAI | Confirmação de e-mail",
                         $"Por favor, confirme a sua conta <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicando aqui</a>.");
 
-                    await _signInManager.SignInAsync(dadosUsuario, isPersistent: false);
+                    //await _signInManager.SignInAsync(dadosUsuario, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in adicionarDadosPessoais.Errors)
@@ -103,19 +107,22 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private UsuarioNoCurso[] MontarUsuariosNoCurso(int[] listaCursosIds, string usuarioId)
+        private UsuarioNoCurso[] MontarUsuariosNoCurso(string[] listaCursosIds, string usuarioId)
         {
             List<UsuarioNoCurso> listaUsuarioNosCursos = new List<UsuarioNoCurso>();
 
-            foreach (var cursoId in listaCursosIds)
+            foreach (var cursoIdString in listaCursosIds)
             {
-                UsuarioNoCurso usuarioNoCurso = new UsuarioNoCurso
+                if (Int32.TryParse(cursoIdString, out var cursoIdInt))
                 {
-                    UsuarioId = usuarioId,
-                    CursoId = cursoId,
-                };
+                    UsuarioNoCurso usuarioNoCurso = new UsuarioNoCurso
+                    {
+                        UsuarioId = usuarioId,
+                        CursoId = cursoIdInt,
+                    };
 
-                listaUsuarioNosCursos.Add(usuarioNoCurso);
+                    listaUsuarioNosCursos.Add(usuarioNoCurso);
+                }
             }
 
             return listaUsuarioNosCursos.ToArray();

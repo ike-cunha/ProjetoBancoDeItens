@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using ProjetoBancoDeItens.Data.Model;
+using ProjetoBancoDeItens.Data.Repository;
+using ProjetoBancoDeItens.Data;
 
 namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
 {
@@ -18,11 +20,18 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ApplicationDbContext _db;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, 
+                          ILogger<LoginModel> logger,
+                          UserManager<ApplicationUser> userManager,
+                          ApplicationDbContext db)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
+            _db = db;
         }
 
         [BindProperty]
@@ -72,10 +81,12 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+
+                var usuario = new UsuarioRepository(_db).BuscarPorEmail(Input.Email);
+                var result = await _signInManager.PasswordSignInAsync(usuario, Input.Password, Input.RememberMe, true);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    _logger.LogInformation("Usuário Logado.");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -84,12 +95,12 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning("User account locked out.");
+                    _logger.LogWarning("Conta de usuário bloqueada.");
                     return RedirectToPage("./Lockout");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Login ou senha incorreto(a).");
                     return Page();
                 }
             }
