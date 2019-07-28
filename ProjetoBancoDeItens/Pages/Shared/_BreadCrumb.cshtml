@@ -1,0 +1,26 @@
+﻿@model IEnumerable<string>
+
+<nav class="col-md-12 pull-right text-right">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-unstyled list-inline">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    if (i < Model.Count() - 1)
+                    {
+                        <span>
+                            <i class="fa fa-angle-right fa-fw"></i><a href="/home">@(Model.ToArray()[i])</a>
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            <i class="fa fa-angle-right fa-fw"></i>@(Model.ToArray()[i])
+                        </span>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</nav>

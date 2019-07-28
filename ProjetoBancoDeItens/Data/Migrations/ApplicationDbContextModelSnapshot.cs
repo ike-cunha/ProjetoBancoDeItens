@@ -133,6 +133,29 @@ namespace ProjetoBancoDeItens.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("ProjetoBancoDeItens.Data.Model.AlternativaItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("Imagem");
+
+                    b.Property<int>("ItemId");
+
+                    b.Property<int>("Posicao");
+
+                    b.Property<bool>("Resposta");
+
+                    b.Property<byte[]>("Texto");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("AlternativaItem");
+                });
+
             modelBuilder.Entity("ProjetoBancoDeItens.Data.Model.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -150,6 +173,8 @@ namespace ProjetoBancoDeItens.Data.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<bool>("FlAtivo");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -202,9 +227,7 @@ namespace ProjetoBancoDeItens.Data.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("VARCHAR(80)");
 
-                    b.Property<string>("Sigla")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(3)");
+                    b.Property<int>("Sigla");
 
                     b.HasKey("Id");
 
@@ -265,11 +288,38 @@ namespace ProjetoBancoDeItens.Data.Migrations
                     b.ToTable("Curso");
                 });
 
+            modelBuilder.Entity("ProjetoBancoDeItens.Data.Model.HistoricoConteudoItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ConteudoItemId");
+
+                    b.Property<DateTime>("DataAlteracao");
+
+                    b.Property<byte[]>("Imagem");
+
+                    b.Property<int>("Posicao");
+
+                    b.Property<byte[]>("Texto");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConteudoItemId");
+
+                    b.ToTable("HistoricoConteudoItem");
+                });
+
             modelBuilder.Entity("ProjetoBancoDeItens.Data.Model.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Aprovado");
+
+                    b.Property<bool>("Ativo");
 
                     b.Property<int>("Gabarito");
 
@@ -407,6 +457,14 @@ namespace ProjetoBancoDeItens.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("ProjetoBancoDeItens.Data.Model.AlternativaItem", b =>
+                {
+                    b.HasOne("ProjetoBancoDeItens.Data.Model.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("ProjetoBancoDeItens.Data.Model.CompetenciaDoItem", b =>
                 {
                     b.HasOne("ProjetoBancoDeItens.Data.Model.Competencia", "Competencia")
@@ -425,6 +483,14 @@ namespace ProjetoBancoDeItens.Data.Migrations
                     b.HasOne("ProjetoBancoDeItens.Data.Model.Item", "Item")
                         .WithMany()
                         .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ProjetoBancoDeItens.Data.Model.HistoricoConteudoItem", b =>
+                {
+                    b.HasOne("ProjetoBancoDeItens.Data.Model.ConteudoItem", "ConteudoItem")
+                        .WithMany()
+                        .HasForeignKey("ConteudoItemId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

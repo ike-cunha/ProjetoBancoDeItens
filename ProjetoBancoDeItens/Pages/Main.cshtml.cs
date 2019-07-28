@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ProjetoBancoDeItens.Pages
 {
-    public class IndexModel : PageModel
+    public class MainModel : PageModel
     {
         public void OnGet()
         {

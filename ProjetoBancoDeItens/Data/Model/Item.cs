@@ -19,9 +19,13 @@ namespace ProjetoBancoDeItens.Data.Model
         public string UsuarioId { get; set; }
 
         [Required]
-        public Constantes.Gabarito Gabarito { get; set; }
+        public Constantes.Nivel Nivel { get; set; }
+
+        public Constantes.Alternativa Gabarito { get; set; }
 
         [Required]
-        public Constantes.Nivel Nivel { get; set; }
+        public bool Aprovado { get; set; }
+
+        public bool Ativo { get; set; }
     }
 }

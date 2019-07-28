@@ -7,7 +7,8 @@
       "destination": "wwwroot/lib/jquery.inputmask/"
     },
     {
-      "library": "font-awesome@5.8.2",
+      "provider": "cdnjs",
+      "library": "font-awesome@5.9.0",
       "destination": "wwwroot/lib/font-awesome/"
     }
   ]

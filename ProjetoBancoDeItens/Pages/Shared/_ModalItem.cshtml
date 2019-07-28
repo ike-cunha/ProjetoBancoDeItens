@@ -1,0 +1,77 @@
+﻿@model ProjetoBancoDeItens.Data.DTO.ItemModalDTO
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="ItemModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="border:solid black 2px; border-radius: 1%" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="row">
+                            <h5 class="modal-title text-left col-10" id="Item">Autor(a): @Model.Autor</h5>
+                            <div class="text-center col-2">
+                                <h5 style="border: solid green 2px; border-radius:100%">@Model.RespostaCorreta</h5>
+
+                            </div>
+                        </div>
+                        <hr />
+                        <br />
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        @{
+                            if (Model.Suporte.IsImage)
+                            {
+                                <small>SUPORTE:</small>
+                                <figure>
+                                    <img src="data:image/png;base64, @Model.Suporte.Enunciado"
+                                         style="width:200px;height:200px;" />
+                                </figure>
+                            }
+                            else
+                            {
+                                <small>SUPORTE:</small>
+                                <h5 class="text-justify">@Model.Suporte.Enunciado.ToString()</h5>
+                            }
+                        }
+                        <br />
+                        <small>COMANDO:</small>
+                        <p>@Model.Comando</p>
+                        <br />
+                        @{
+                            if (Model.Alternativas.IsImage)
+                            {
+                                <small>ALTERNATIVAS:</small>
+                                foreach (var alternativa in Model.Alternativas.Estrutura)
+                                {
+                                    <p>@alternativa.Posicao ) </p>
+                                    <figure>
+                                        <img src="data:image/png;base64, @alternativa.AlternativaString64"
+                                             style="width:200px;height:200px;"
+                                             alt="Alternativa @alternativa.Posicao" />
+                                    </figure>
+                                }
+                            }
+                            else
+                            {
+                                <small>ALTERNATIVAS:</small>
+                                foreach (var alternativa in Model.Alternativas.Estrutura)
+                                {
+                                    <p>@alternativa.Posicao) @alternativa.AlternativaString64</p>
+                                }
+                            }
+                        }
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer" style="justify-content:center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+

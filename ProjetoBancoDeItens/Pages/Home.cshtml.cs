@@ -1,32 +1,26 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using ProjetoBancoDeItens.Data;
 using ProjetoBancoDeItens.Data.Model;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoBancoDeItens.Data.DTO;
-using System.Collections.Generic;
 using ProjetoBancoDeItens.Data.Repository;
 using Microsoft.AspNetCore.Authorization;
-using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoBancoDeItens.Pages
 {
     [Authorize]
     public class HomeModel : PageModel
     {
-        private readonly ILogger<HomeModel> _logger;
         private readonly ApplicationDbContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public HomeModel(
-            ILogger<HomeModel> logger,
             ApplicationDbContext db,
             UserManager<ApplicationUser> userManager)
         {
-            _logger = logger;
             _db = db;
             _userManager = userManager;
         }

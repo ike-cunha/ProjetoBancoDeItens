@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProjetoBancoDeItens.Data.Enum;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProjetoBancoDeItens.Data.Model
 {
@@ -13,8 +10,7 @@ namespace ProjetoBancoDeItens.Data.Model
         public int Id { get; set; }
 
         [Required]
-        [Column(TypeName = "VARCHAR(3)")]
-        public string Sigla { get; set; }
+        public Constantes.Competencias Sigla { get; set; }
 
         [Column(TypeName = "VARCHAR(80)")]
         public string Descricao { get; set; }

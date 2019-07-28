@@ -38,5 +38,7 @@ namespace ProjetoBancoDeItens.Data
         public DbSet<Competencia> Competencia { get; set; }
         public DbSet<CompetenciaDoItem> CompetenciaDoItem { get; set; }
         public DbSet<ConteudoItem> ConteudoItem { get; set; }
+        public DbSet<HistoricoConteudoItem> HistoricoConteudoItem { get; set; }
+        public DbSet<AlternativaItem> AlternativaItem  { get; set; }
     }
 }

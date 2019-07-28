@@ -4,47 +4,101 @@
     ViewData["Title"] = "ResultadoBusca";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
+<header>
+    @{
+        var modelo = new List<string> { "Home", "Resultado Pesquisa" };
+
+    }
+    <partial name="_BreadCrumb" model="modelo" />
+</header>
+
+@Html.Hidden("__RequestVerificationToken", Html.AntiForgeryToken())
+<form method="post">
+    <div class="row p-5">
+        <div class="col-1"></div>
+        <div class="input-group col-10">
+            <div class="input-group-prepend">
+                <button type="submit" class="btn btn-sm btn-success">
+                    <span class="input-group-text bg-success border-0" id="basic-addon1"><i class="fa fa-search text-white"></i></span>
+                </button>
+            </div>
+            <input asp-for="Busca.ConteudoBusca" type="text" class="form-control text-center" placeholder="Campo de Busca" aria-label="Campo de Busca" aria-describedby="basic-addon1">
+        </div>
+        <div class="col-1"></div>
+    </div>
+</form>
+<div class="row p-5">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="table-responsive">
+            <table class="table-sm table-striped col-12">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center col-3">Código</th>
+                        <th scope="col" class="text-center col-6">Item (comando)</th>
+                        <th scope="col" class="text-center col-3">Visualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Busca.Itens)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                @item.Id
+                            </td>
+                                @{
+                                    if (item.Nome.Length > 40)
+                                    {
+                                    <td class="text-left">
+                                        @item.Nome.Substring(0, 40) ...
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-left">
+                                        @item.Nome
+                                    </td>
+                                }
+                                }
+                                <td class="text-center">
+                                    <span>
+                                        <a href="#" class="text-dark" onclick="javascript:visualizarItem(@item.Id)">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+<div id="itemModal"></div>
 
 @section Scripts {
     <script src="https://kit.fontawesome.com/faeb5bd984.js"></script>
 }
 
-<div class="row p-5">
-    <div class="col-1"></div>
-    <div class="input-group col-10">
-        <div class="input-group-prepend">
-            <span class="input-group-text bg-success border-0" id="basic-addon1"><i class="fa fa-search text-white"></i></span>
-        </div>
-        <input type="text" class="form-control text-center" placeholder="Campo de Busca" aria-label="Campo de Busca" aria-describedby="basic-addon1">
-    </div>
-    <div class="col-1"></div>
-</div>
-<div class="row">
-    <div class="col-10">
-        <div class="table-responsive col">
-            <table class="table-sm table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col" class="text-center col-3">Código</th>
-                        <th scope="col" class="text-center col-6">Item (comando)</th>
-                        <th scope="col" class="text-center col-3"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @*@foreach (var itemAvaliacao in collection)
-                    {
-                        <tr>
-                            <td class="text-center">
-                                @itemAvaliacao.Id
-                            </td>
-                            <td class="text-left">
-                                @itemAvaliacao.Nome.Substring(0, 25) ...
-                            </td>
-                        </tr>
-                    }*@
-                </tbody>
-            </table>
-        </div>
-    </div>
+<script>
+    function visualizarItem(itemId) {
+        $.ajax({
+            type: "POST",
+            url: "/ResultadoBusca?handler=Visualizar",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("XSRF-TOKEN",
+                    $('input:hidden[name="__RequestVerificationToken"]').val());
+            },
+            data: { itemId: itemId },
+            success: function (response) {
+                $('#itemModal').html(response);
+                $('#modal').modal('show');
+            },
+            failure: function (response) {
+                alert(response);
+            }
+        });
 
-</div>
+    }
+</script>

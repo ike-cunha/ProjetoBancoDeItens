@@ -24,21 +24,21 @@
             <div class="form-group row">
                 <label asp-for="usuario.Nome" class="col-sm-2 col-form-label"></label>
                 <div class="col-10">
-                    <input id="cpfId" asp-for="usuario.Nome" class="form-control" />
+                    <input id="Nome" asp-for="usuario.Nome" class="form-control" />
                 </div>
                 <span asp-validation-for="usuario.Nome" class="text-danger"></span>
             </div>
             <div class="form-group row">
                 <label asp-for="usuario.Email" class="col-sm-2 col-form-label"></label>
                 <div class="col-10">
-                    <input id="cpfId" asp-for="usuario.Email" class="form-control" />
+                    <input id="Email" asp-for="usuario.Email" class="form-control" />
                 </div>
                 <span asp-validation-for="usuario.Email" class="text-danger"></span>
             </div>
             <div class="form-group row">
                 <label asp-for="usuario.Matricula" class="col-sm-2 col-form-label"></label>
                 <div class="col-10">
-                    <input id="cpfId" asp-for="usuario.Matricula" class="form-control" />
+                    <input id="Matricula" asp-for="usuario.Matricula" class="form-control" />
                 </div>
                 <span asp-validation-for="usuario.Matricula" class="text-danger"></span>
             </div>
@@ -46,7 +46,7 @@
                 <label asp-for="usuario.Curso" class="col-sm-2 col-form-label"></label>
                 <div class="col-10">
                     <div class="form-group">
-                        <select asp-for="usuario.Curso" asp-items="Model.ListaCursos" class="form-control checkclass"></select>
+                        <select asp-for="usuario.Curso" asp-items="Model.ListaCursos" onchange="(CarregarUnidadeCurricular())" class="form-control checkclass"></select>
                     </div>
                 </div>
                 <span asp-validation-for="usuario.Curso" class="text-danger"></span>
@@ -54,7 +54,7 @@
             <div class="form-group row">
                 <label asp-for="usuario.UnidadeCurricular" class="col-sm-4 col-form-label"></label>
                 <div class="col-8">
-                    <input id="cpfId" asp-for="usuario.UnidadeCurricular" class="form-control" />
+                    <div class="form-group" id="dropdownunidadec"></div>
                 </div>
                 <span asp-validation-for="usuario.UnidadeCurricular" class="text-danger"></span>
             </div>
@@ -84,3 +84,26 @@
     <partial name="_ValidationScriptsPartial" />
     <script src="~/lib/jquery.inputmask/jquery.inputmask.bundle.js"></script>
 }
+
+<script>
+    function CarregarUnidadeCurricular() {
+        var cursosSelecionados = $('#usuario_Curso').val();
+
+        $.ajax({
+            type: "GET",
+            url: "Register?handler=UnidadeCurricular",
+            data: { cursosIds: JSON.stringify(cursosSelecionados)},
+            success: function (response) {
+                var dropdownUnidadesCurriculares = '<select asp-for="usuario.UnidadeCurricular" class="form-control checkclass">';
+                $.each(response, function (i, item) {
+                    dropdownUnidadesCurriculares += '<option value="' + item.id + '">' + item.nome + '</option>';
+                });
+                dropdownUnidadesCurriculares += '</select>';
+                $('#dropdownunidadec').html(dropdownUnidadesCurriculares);
+            },
+            failure: function (response) {
+                alert(response);
+            }
+        });
+    }
+</script>

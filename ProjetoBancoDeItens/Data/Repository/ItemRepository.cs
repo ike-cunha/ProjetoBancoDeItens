@@ -1,4 +1,6 @@
 ﻿using ProjetoBancoDeItens.Data.DTO;
+using ProjetoBancoDeItens.Data.Enum;
+using ProjetoBancoDeItens.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +29,31 @@ namespace ProjetoBancoDeItens.Data.Repository
                    .Select(p => p.Id)
                    .ToArray();
         }
+
+        public Constantes.Alternativa BuscarRespostaCorreta(int itemId)
+        {
+            return db.Item.Where(i => i.Id == itemId)
+                          .Select(p => p.Gabarito)
+                          .FirstOrDefault();
+        }
+
+        public int Adicionar(ItemDTO item)
+        {
+            Item novoItem = new Item
+            {
+                UsuarioId = item.UsuarioId,
+                UnidadeCurricularId = item.UnidadeCurricularId,
+                Nivel = item.Nivel,
+                Gabarito = item.Gabarito,
+                Aprovado = item.Aprovado,
+                Ativo = item.Ativo,
+            };
+
+            db.Item.Add(novoItem);
+            db.SaveChanges();
+
+            return novoItem.Id;
+        }
+
     }
 }

@@ -18,5 +18,8 @@ namespace ProjetoBancoDeItens.Data.Model
 
         [Column(TypeName = "VARCHAR(120)")]
         public string Nome { get; set; }
+
+
+        public bool FlAtivo { get; set; }
     }
 }

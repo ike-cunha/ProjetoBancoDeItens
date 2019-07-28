@@ -22,37 +22,20 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">ProjetoBancoDeItens</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <a href="/home">
+                    <img src="http://uploaddeimagens.com.br/images/002/155/384/original/SENAI_WEB.png?1561421863" style="width:25%" alt="Logo SENAI" />
+                </a>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        @*<partial name="_CookieConsentPartial" />*@
         <main role="main" class="p-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - ProjetoBancoDeItens - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -80,6 +63,11 @@
 <style>
     .bg-background-image {
         background-image: url("http://uploaddeimagens.com.br/images/002/133/048/original/Fundo.png?1560035506");
-        background-size: cover;
+        background-size: auto;
+    }
+
+    .bg-logo-senai {
+        background-image: url("http://uploaddeimagens.com.br/images/002/155/384/original/SENAI_WEB.png?1561421863");
+        
     }
 </style>

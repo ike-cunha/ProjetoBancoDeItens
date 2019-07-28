@@ -25,7 +25,7 @@ namespace ProjetoBancoDeItens.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("Joe@contoso.com", "Joe Smith"),
+                From = new EmailAddress("diego@senai.sc.br", "Professor Diego"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message

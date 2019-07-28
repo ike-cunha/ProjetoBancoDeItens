@@ -15,6 +15,7 @@ using ProjetoBancoDeItens.Data.Repository;
 using ProjetoBancoDeItens.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using Newtonsoft.Json;
 
 namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
 {
@@ -72,6 +73,7 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
                     UserName = usuario.Email,
                     Matricula = usuario.Matricula,
                     Email = usuario.Email,
+                    FlAtivo = true,
                 };
                 IdentityResult adicionarDadosPessoais = await _userManager.CreateAsync(dadosUsuario, usuario.Senha);
 
@@ -126,6 +128,19 @@ namespace ProjetoBancoDeItens.Areas.Identity.Pages.Account
             }
 
             return listaUsuarioNosCursos.ToArray();
+        }
+
+        public JsonResult OnGetUnidadeCurricular(string cursosIds)
+        {
+            var ArrayDesserializado = JsonConvert.DeserializeObject<int[]>(cursosIds);
+            return new JsonResult(new UnidadeCurricularRepository(_db).BuscarComCursoId(ArrayDesserializado)
+                                                                      .OrderBy(o => o.Nome)
+                                                                      .Select(s => new
+                                                                      {
+                                                                          s.Nome,
+                                                                          s.Id
+                                                                      })
+                                                                      .ToList());
         }
     }
 }
